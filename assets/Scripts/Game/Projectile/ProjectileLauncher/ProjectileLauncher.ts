@@ -27,14 +27,17 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
     private expireTimes: number[] = [];
     private currentTime = 0;
 
+    // 获取投射物碰撞事件信号
     public get ProjectileCollisionEvent(): ISignal<ProjectileCollision> {
         return this.projectileCollisionEvent;
     }
 
+    // 获取投射物发射事件信号
     public get ProjectileLaunchedEvent(): ISignal {
         return this.projectileLaunchedEvent;
     }
 
+    // 初始化投射物发射器
     public init(projectileLifetime: number, projectileSpeed: number, projectileDamage: number, projectilePierces: number): void {
         this.projectileLifetime = projectileLifetime;
         this.projectileSpeed = projectileSpeed;
@@ -44,18 +47,21 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         this.projectilePool = new ObjectPool<Projectile>(this.projectilePrefab, this.node, 6, "Projectile");
     }
 
+    // 游戏每帧调用的方法
     public gameTick(deltaTime: number): void {
         this.currentTime += deltaTime;
         this.tryRemoveExpiredProjectiles();
         this.moveAllProjectiles(deltaTime);
     }
 
+    // 发射投射物
     public fireProjectiles(startPosition: Vec3, fireDirections: Vec2[]): void {
         for (const direction of fireDirections) {
             this.fireProjectile(startPosition, direction);
         }
     }
 
+    // 发射单个投射物
     private fireProjectile(startPosition: Vec3, direction: Vec2): void {
         direction = direction.normalize();
         const projectile: Projectile = this.projectilePool.borrow();
@@ -72,6 +78,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         this.projectileLaunchedEvent.trigger();
     }
 
+    // 尝试移除过期的投射物
     private tryRemoveExpiredProjectiles(): void {
         for (let i = 0; i < this.projectiles.length; i++) {
             if (this.currentTime < this.expireTimes[i]) break; // the oldest particles are at the start of the array
@@ -82,6 +89,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         }
     }
 
+    // 当投射物穿透次数耗尽时调用
     private onPiercesDepleted(projectile: Projectile): void {
         const index = this.projectiles.indexOf(projectile);
         if (index === -1) {
@@ -91,6 +99,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         this.removeProjectile(projectile, index);
     }
 
+    // 移除投射物
     private removeProjectile(projectile: Projectile, index: number): void {
         projectile.ContactBeginEvent.off(this.onProjectileCollision);
         projectile.PiercesDepletedEvent.off(this.onPiercesDepleted);
@@ -102,6 +111,7 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         this.expireTimes.splice(index, 1);
     }
 
+    // 移动所有投射物
     private moveAllProjectiles(deltaTime: number): void {
         for (let i = 0; i < this.projectiles.length; i++) {
             const newPosition: Vec3 = this.projectiles[i].node.worldPosition;
@@ -112,7 +122,8 @@ export class ProjectileLauncher extends Component implements IProjectileLauncher
         }
     }
 
-    private onProjectileCollision(projectlieCollision: ProjectileCollision): void {
-        this.projectileCollisionEvent.trigger(projectlieCollision);
+    // 当投射物发生碰撞时调用
+    private onProjectileCollision(projectileCollision: ProjectileCollision): void {
+        this.projectileCollisionEvent.trigger(projectileCollision);
     }
 }

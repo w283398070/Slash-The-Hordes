@@ -6,7 +6,9 @@ import { DelayedEnemySpawner } from "./DelayedEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner";
 
 export class IndividualEnemySpawner extends DelayedEnemySpawner {
+    // 生成计时器
     private spawnTimer: GameTimer;
+    // 敌人ID
     private enemyId: string;
 
     public constructor(private enemySpawner: EnemySpawner, settings: IndividualEnemySpawnerSettings) {
@@ -16,6 +18,7 @@ export class IndividualEnemySpawner extends DelayedEnemySpawner {
         this.enemyId = settings.common.enemyId;
     }
 
+    // 延迟生成敌人
     public delayedGameTick(deltaTime: number): void {
         this.spawnTimer.gameTick(deltaTime);
         if (this.spawnTimer.tryFinishPeriod()) {

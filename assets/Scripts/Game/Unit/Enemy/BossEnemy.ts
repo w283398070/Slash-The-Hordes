@@ -15,24 +15,28 @@ export class BossEnemy extends Enemy {
         this.bossCollider.on(Contact2DType.END_CONTACT, this.collisionEnd, this);
     }
 
+    // 碰撞开始时调用
     private collisionBegin(_selfCollider: Collider2D, otherCollider: Collider2D): void {
         if (otherCollider.group === GroupType.PLAYER) {
             this.animateAttack();
         }
     }
 
+    // 碰撞结束时调用
     private collisionEnd(_selfCollider: Collider2D, otherCollider: Collider2D): void {
         if (otherCollider.group === GroupType.PLAYER) {
             this.animateMove();
         }
     }
 
+    // 播放攻击动画
     private animateAttack(): void {
         if (this.isAnimatingAttack) return;
         this.isAnimatingAttack = true;
         this.animation.play("Attack");
     }
 
+    // 播放移动动画
     private animateMove(): void {
         if (!this.isAnimatingAttack) return;
         this.isAnimatingAttack = false;

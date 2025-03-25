@@ -6,8 +6,11 @@ import { DelayedEnemySpawner } from "./DelayedEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner";
 
 export class CircularEnemySpawner extends DelayedEnemySpawner {
+    // 生成计时器
     private spawnTimer: GameTimer;
+    // 敌人ID
     private enemyId: string;
+    // 要生成的敌人数量
     private enemiesToSpawn: number;
 
     public constructor(private enemySpawner: EnemySpawner, settings: CircularEnemySpawnerSettings) {
@@ -18,6 +21,7 @@ export class CircularEnemySpawner extends DelayedEnemySpawner {
         this.enemiesToSpawn = settings.enemiesToSpawn;
     }
 
+    // 延迟生成敌人
     public delayedGameTick(deltaTime: number): void {
         this.spawnTimer.gameTick(deltaTime);
 

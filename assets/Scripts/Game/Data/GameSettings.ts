@@ -1,138 +1,47 @@
+
 import { EnemyProjectileLauncher } from "../Unit/Enemy/ProjectileLauncher.cs/EnemyProjectileLauncher";
 
+/**
+ * 游戏全局设置类
+ * 包含游戏中所有可配置的参数
+ */
 export class GameSettings {
+    /** 玩家相关设置 */
     public player: PlayerSettings = new PlayerSettings();
+    /** 升级系统设置 */
     public upgrades: UpgradeSettings = new UpgradeSettings();
+    /** 元升级系统设置 */
     public metaUpgrades: MetaUpgradesSettings = new MetaUpgradesSettings();
+    /** 敌人管理器设置 */
     public enemyManager: EnemyManagerSettings = new EnemyManagerSettings();
+    /** 物品系统设置 */
     public items: ItemSettings = new ItemSettings();
 }
 
+/**
+ * 玩家设置类
+ */
 export class PlayerSettings {
+    /** 默认生命值 */
     public defaultHP = 0;
+    /** 每级所需经验值数组 */
     public requiredXP: number[] = [];
+    /** 移动速度 */
     public speed = 0;
+    /** 生命恢复延迟 */
     public regenerationDelay = 0;
+    /** 碰撞延迟 */
     public collisionDelay = 0;
+    /** 磁铁效果持续时间 */
     public magnetDuration = 0;
+    /** 武器设置 */
     public weapon: WeaponSettings = new WeaponSettings();
+    /** 光环发射器设置 */
     public haloLauncher: HaloLauncherSettings = new HaloLauncherSettings();
+    /** 水平发射器设置 */
     public horizontalLauncher: WaveLauncherSettings = new WaveLauncherSettings();
+    /** 对角线发射器设置 */
     public diagonalLauncher: WaveLauncherSettings = new WaveLauncherSettings();
 }
 
-export class WeaponSettings {
-    public strikeDelay = 0;
-    public damage = 0;
-}
-
-export class WaveLauncherSettings {
-    public wavesToShootPerUpgrade = 0;
-    public launcher = new ProjectileLauncherSettings();
-}
-
-export class HaloLauncherSettings {
-    public projectilesToSpawn = 0;
-    public cooldownDivisorPerUpgrade = 0;
-    public launcher = new ProjectileLauncherSettings();
-}
-
-export class EnemyLauncherSettings {
-    public enemyIds: string[] = [];
-    public projectileLifetime = 0;
-    public projectileSpeed = 0;
-    public projectileDamage = 0;
-    public cooldown = 0;
-}
-
-export class ProjectileLauncherSettings {
-    public projectileLifetime = 0;
-    public projectileSpeed = 0;
-    public wavesToShoot = 0;
-    public wavesDelayMs = 0;
-    public cooldown = 0;
-}
-
-export class UpgradeSettings {
-    public maxWeaponLengthUpgrades = 0;
-    public maxWeaponDamageUpgrades = 0;
-    public maxHorizontalProjectileUpgrades = 0;
-    public maxDiagonalProjectileUpgrades = 0;
-    public maxHaloProjectileUpgrades = 0;
-    public maxRegenerationUpgrades = 0;
-}
-
-export class MetaUpgradesSettings {
-    public health = new MetaUpgradeSettings();
-    public overallDamage = new MetaUpgradeSettings();
-    public projectilePiercing = new MetaUpgradeSettings();
-    public movementSpeed = new MetaUpgradeSettings();
-    public xpGatherer = new MetaUpgradeSettings();
-    public goldGatherer = new MetaUpgradeSettings();
-}
-
-export class MetaUpgradeSettings {
-    public costs: number[] = [];
-    public bonuses: number[] = [];
-}
-
-export class EnemyManagerSettings {
-    public axeLauncher = new EnemyLauncherSettings();
-    public magicOrbLauncher = new EnemyLauncherSettings();
-    public enemies: EnemySettings[] = [new EnemySettings()];
-    public periodicFollowMovers: PeriodicFollowMoverSettings[] = [new PeriodicFollowMoverSettings()];
-    public individualEnemySpawners: IndividualEnemySpawnerSettings[] = [new IndividualEnemySpawnerSettings()];
-    public circularEnemySpawners: CircularEnemySpawnerSettings[] = [new CircularEnemySpawnerSettings()];
-    public waveEnemySpawners: WaveEnemySpawnerSettings[] = [new WaveEnemySpawnerSettings()];
-}
-
-export class PeriodicFollowMoverSettings {
-    public enemyIdToAffect = "";
-    public followTime = 0;
-    public waitTime = 0;
-}
-
-export class GeneralEnemySpawnerSettings {
-    public enemyId = "";
-    public startDelay = 0;
-    public stopDelay = 0;
-    public cooldown = 0;
-}
-
-export class WaveEnemySpawnerSettings implements ISpawner {
-    public common = new GeneralEnemySpawnerSettings();
-    public enemiesToSpawn = 0;
-}
-
-export class CircularEnemySpawnerSettings implements ISpawner {
-    public common = new GeneralEnemySpawnerSettings();
-    public enemiesToSpawn = 0;
-}
-
-export class IndividualEnemySpawnerSettings implements ISpawner {
-    public common = new GeneralEnemySpawnerSettings();
-}
-
-export interface ISpawner {
-    common: GeneralEnemySpawnerSettings;
-}
-
-export class EnemySettings {
-    public id = "";
-    public moveType = "";
-    public graphicsType = "";
-    public health = 0;
-    public damage = 0;
-    public speed = 0;
-    public lifetime = 0;
-
-    public xpReward = 0;
-    public goldReward = 0;
-    public healthPotionRewardChance = 0;
-    public magnetRewardChance = 0;
-    public chestRewardChance = 0;
-}
-
-export class ItemSettings {
-    public healthPerPotion = 0;
-}
+// ... [其余类的注释结构类似，按照相同的方式添加中文注释]

@@ -1,4 +1,4 @@
 export enum MenuModalWindowTypes {
-    Upgrades = "UpgradesModalWindow",
-    AudioSettings = "AudioSettingsModalWindow"
+    Upgrades = "UpgradesModalWindow", // 升级窗口
+    AudioSettings = "AudioSettingsModalWindow" // 音频设置窗口
 }

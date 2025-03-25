@@ -24,18 +24,21 @@ export class EnemyProjectileLauncher {
         projectileLauncher.init(settings.projectileLifetime, settings.projectileSpeed, settings.projectileDamage, 1);
     }
 
+    // 尝试添加敌人
     private tryAddEnemy(enemy: Enemy): void {
         if (this.enemyIds.includes(enemy.Id)) {
             this.enemyToTimer.set(enemy, new GameTimer(this.cooldown));
         }
     }
 
+    // 尝试移除敌人
     private tryRemoveEnemy(enemy: Enemy): void {
         if (!this.enemyToTimer.has(enemy)) return;
 
         this.enemyToTimer.delete(enemy);
     }
 
+    // 游戏每帧调用的方法
     public gameTick(deltaTime: number): void {
         this.projectileLauncher.gameTick(deltaTime);
 

@@ -5,10 +5,12 @@ const { ccclass, property } = _decorator;
 export class EnemyDeathEffect extends Component {
     @property(Animation) private animation: Animation;
 
+    // 设置效果位置并激活
     public setup(worldPosition: Vec3): void {
         this.node.setWorldPosition(worldPosition);
         this.node.active = true;
 
+        // 播放死亡效果动画
         this.animation.play("DeathEffect");
     }
 }

@@ -12,22 +12,23 @@ const { ccclass, property } = _decorator;
 
 @ccclass("Player")
 export class Player extends Component {
-    @property(BoxCollider2D) private collider: BoxCollider2D;
-    @property(PlayerUI) private playerUI: PlayerUI;
-    @property(Weapon) private weapon: Weapon;
-    @property(Magnet) private magnet: Magnet;
-    @property(Node) private playerGraphics: Node;
-    @property(Animation) private animation: Animation;
-    @property(Sprite) private sprite: Sprite;
+    @property(BoxCollider2D) private collider: BoxCollider2D; // 玩家碰撞器
+    @property(PlayerUI) private playerUI: PlayerUI; // 玩家UI
+    @property(Weapon) private weapon: Weapon; // 玩家武器
+    @property(Magnet) private magnet: Magnet; // 磁铁
+    @property(Node) private playerGraphics: Node; // 玩家图形节点
+    @property(Animation) private animation: Animation; // 动画组件
+    @property(Sprite) private sprite: Sprite; // 精灵组件
 
-    private input: IInput;
-    private health: UnitHealth;
-    private level: UnitLevel;
-    private regeneration: PlayerRegeneration;
-    private speed: number;
+    private input: IInput; // 输入接口
+    private health: UnitHealth; // 生命值
+    private level: UnitLevel; // 等级
+    private regeneration: PlayerRegeneration; // 生命值恢复
+    private speed: number; // 移动速度
 
-    private isMoveAnimationPlaying = false;
+    private isMoveAnimationPlaying = false; // 是否正在播放移动动画
 
+    // 初始化方法
     public init(input: IInput, data: PlayerData): void {
         this.input = input;
         this.health = new UnitHealth(data.maxHp);
@@ -65,6 +66,7 @@ export class Player extends Component {
         return this.collider;
     }
 
+    // 游戏每帧调用的方法
     public gameTick(deltaTime: number): void {
         this.move(deltaTime);
         this.weapon.gameTick(deltaTime);
@@ -72,6 +74,7 @@ export class Player extends Component {
         this.regeneration.gameTick(deltaTime);
     }
 
+    // 移动方法
     private move(deltaTime: number): void {
         if (!this.health.IsAlive) return;
 
@@ -104,6 +107,7 @@ export class Player extends Component {
         }
     }
 
+    // 动画：生命值变化
     private async animateHpChange(hpChange: number): Promise<void> {
         if (hpChange < 0) {
             this.sprite.color = Color.RED;
@@ -120,6 +124,7 @@ export class Player extends Component {
     }
 }
 
+// 玩家数据类
 export class PlayerData {
     public requiredXP: number[] = [];
     public speed = 0;
@@ -128,10 +133,10 @@ export class PlayerData {
     public xpMultiplier = 0;
     public goldMultiplier = 0;
 
-    // Weapon
+    // 武器
     public strikeDelay = 0;
     public damage = 0;
 
-    // Magnet
+    // 磁铁
     public magnetDuration = 0;
 }

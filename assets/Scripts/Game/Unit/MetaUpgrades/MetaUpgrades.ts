@@ -3,8 +3,11 @@ import { MetaUpgradesData } from "../../Data/UserData";
 import { MetaUpgradeType } from "../../Upgrades/UpgradeType";
 
 export class MetaUpgrades {
+    // 升级类型到数值的映射
     private upgradeTypeToValue = new Map<MetaUpgradeType, number>();
+
     public constructor(data: MetaUpgradesData, settings: MetaUpgradesSettings) {
+        // 设置各类元升级的数值
         this.upgradeTypeToValue.set(MetaUpgradeType.Health, this.getBonusValue(data.healthLevel, settings.health.bonuses));
         this.upgradeTypeToValue.set(MetaUpgradeType.OverallDamage, this.getBonusValue(data.overallDamageLevel, settings.overallDamage.bonuses));
         this.upgradeTypeToValue.set(
@@ -16,6 +19,7 @@ export class MetaUpgrades {
         this.upgradeTypeToValue.set(MetaUpgradeType.GoldGatherer, this.getBonusValue(data.goldGathererLevel, settings.goldGatherer.bonuses));
     }
 
+    // 获取对应等级的奖励值
     private getBonusValue(level: number, bonuses: number[]): number {
         if (level <= 0) return 0;
         if (bonuses.length < level) throw new Error(`Meta upgrade does not have settings for level ${level}`);
@@ -23,6 +27,7 @@ export class MetaUpgrades {
         return bonuses[level - 1];
     }
 
+    // 获取升级类型的数值
     public getUpgradeValue(type: MetaUpgradeType): number {
         if (!this.upgradeTypeToValue.has(type)) {
             throw new Error("Does not have meta upgrade set up " + type);

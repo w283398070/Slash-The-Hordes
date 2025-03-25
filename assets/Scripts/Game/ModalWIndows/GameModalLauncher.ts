@@ -18,9 +18,11 @@ export class GameModalLauncher {
         private upgrader: Upgrader,
         private translationData: TranslationData
     ) {
+        // 监听玩家升级事件，显示升级窗口
         this.player.Level.LevelUpEvent.on(this.showLevelUpModal, this);
     }
 
+    // 显示升级窗口
     private async showLevelUpModal(): Promise<void> {
         this.gamePauser.pause();
         const skillToUpgrade: UpgradeType = await this.modalWindowManager.showModal<LevelUpModalWindowParams, UpgradeType>(
@@ -31,6 +33,7 @@ export class GameModalLauncher {
         this.gamePauser.resume();
     }
 
+    // 显示宝箱窗口
     public async showChestModal(): Promise<void> {
         this.gamePauser.pause();
         const skillToUpgrade: UpgradeType = await this.modalWindowManager.showModal<LevelUpModalWindowParams, UpgradeType>(
@@ -41,6 +44,7 @@ export class GameModalLauncher {
         this.gamePauser.resume();
     }
 
+    // 显示暂停窗口
     public async showPauseModal(): Promise<void> {
         this.gamePauser.pause();
         const shouldExit = await this.modalWindowManager.showModal<ModalWindowManager, boolean>(GameModalWindowTypes.Pause, this.modalWindowManager);

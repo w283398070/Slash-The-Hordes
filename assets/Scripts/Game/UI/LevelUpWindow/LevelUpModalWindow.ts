@@ -15,6 +15,7 @@ export class LevelUpModalWindow extends ModalWindow<LevelUpModalWindowParams, Up
 
     private maxUpgradesToPick = 3;
 
+    // 设置窗口参数
     protected async setup(params: LevelUpModalWindowParams): Promise<void> {
         const shuffledAvailableUpgrades = shuffle(params.availableUpgrades);
         if (this.maxUpgradesToPick < shuffledAvailableUpgrades.length) {
@@ -32,6 +33,7 @@ export class LevelUpModalWindow extends ModalWindow<LevelUpModalWindowParams, Up
         }
     }
 
+    // 选择技能
     private chooseSkill(upgradeType: UpgradeType): void {
         this.dismiss(upgradeType);
     }

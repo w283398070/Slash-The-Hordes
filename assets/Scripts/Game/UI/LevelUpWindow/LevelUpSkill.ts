@@ -14,6 +14,7 @@ export class LevelUpSkill extends Component {
     private chooseSkillEvent: Signal<UpgradeType> = new Signal<UpgradeType>();
     private skillType: UpgradeType;
 
+    // 初始化技能
     public init(skillType: UpgradeType, translationData: TranslationData): void {
         this.skillType = skillType;
         this.skillTitle.string = `${translationData[`${skillType}_TITLE`]}`;
@@ -22,10 +23,12 @@ export class LevelUpSkill extends Component {
         this.node.on(NodeEventType.TOUCH_START, this.chooseSkill, this);
     }
 
+    // 获取选择技能事件
     public get ChooseSkillEvent(): ISignal<UpgradeType> {
         return this.chooseSkillEvent;
     }
 
+    // 选择技能
     private chooseSkill(): void {
         this.chooseSkillEvent.trigger(this.skillType);
     }

@@ -7,9 +7,12 @@ import { DelayedEnemySpawner } from "./DelayedEnemySpawner";
 import { EnemySpawner } from "./EnemySpawner";
 
 export class WaveEnemySpawner extends DelayedEnemySpawner {
+    // 每波生成的敌人数量
     private enemiesPerWave: number;
+    // 敌人ID
     private enemyId: string;
 
+    // 生成计时器
     private spawnTimer: GameTimer;
 
     public constructor(private enemySpawner: EnemySpawner, settings: WaveEnemySpawnerSettings) {
@@ -20,6 +23,7 @@ export class WaveEnemySpawner extends DelayedEnemySpawner {
         this.enemyId = settings.common.enemyId;
     }
 
+    // 延迟生成敌人
     public delayedGameTick(deltaTime: number): void {
         this.spawnTimer.gameTick(deltaTime);
         if (this.spawnTimer.tryFinishPeriod()) {
