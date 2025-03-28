@@ -8,6 +8,7 @@ export class AnimatedEnemy extends Enemy {
 
     private isAnimatingIdle = false;
 
+    // 每帧调用的方法
     public gameTick(move: Vec3, deltaTime: number): void {
         super.gameTick(move, deltaTime);
 
@@ -20,6 +21,7 @@ export class AnimatedEnemy extends Enemy {
         }
     }
 
+    // 播放待机动画
     private animateIdle(): void {
         if (this.isAnimatingIdle) return;
         this.isAnimatingIdle = true;
@@ -27,6 +29,7 @@ export class AnimatedEnemy extends Enemy {
         this.animation.play("Idle");
     }
 
+    // 播放跑步动画
     private animateRun(): void {
         if (!this.isAnimatingIdle) return;
         this.isAnimatingIdle = false;

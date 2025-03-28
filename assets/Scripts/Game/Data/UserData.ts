@@ -83,4 +83,10 @@ export class MetaUpgradesData {
      * 提高金币收集效率
      */
     public goldGathererLevel = 0;
+
+    /**
+     * 拾取范围升级等级
+     * 提高收集效率
+     */
+    public rangLevel = 0;
 }

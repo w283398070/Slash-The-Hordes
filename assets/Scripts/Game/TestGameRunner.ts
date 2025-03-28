@@ -18,6 +18,7 @@ export class TestGameRunner extends Component {
     @property(CCInteger) private movementSpeedLevel = 0; // 移动速度等级
     @property(CCInteger) private xpGathererLevel = 0; // 经验值收集等级
     @property(CCInteger) private goldGathererLevel = 0; // 金币收集等级
+    @property(CCInteger) private rangLevel = 0; // 范围收集等级
 
     public start(): void {
         if (GameRunner.Instance.IsRunning) return; // 如果游戏正在运行，直接返回
@@ -34,6 +35,7 @@ export class TestGameRunner extends Component {
         testUserData.game.metaUpgrades.movementSpeedLevel = this.movementSpeedLevel;
         testUserData.game.metaUpgrades.xpGathererLevel = this.xpGathererLevel;
         testUserData.game.metaUpgrades.goldGathererLevel = this.goldGathererLevel;
+        testUserData.game.metaUpgrades.rangLevel = this.rangLevel;
 
         const settings = this.getTimeModifiedSettings(AppRoot.Instance.Settings);
         Game.Instance.play(testUserData, settings, AppRoot.Instance.TranslationData, { startTime: this.startTime, startXP: this.startXP });

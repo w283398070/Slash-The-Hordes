@@ -7,6 +7,7 @@ import { Magnet } from "./Magnet";
 import { PlayerRegeneration } from "./PlayerRegeneration";
 import { PlayerUI } from "./PlayerUI/PlayerUI";
 import { Weapon } from "./Weapon/Weapon";
+import { PickUp } from "./PickUp";
 
 const { ccclass, property } = _decorator;
 
@@ -19,6 +20,7 @@ export class Player extends Component {
     @property(Node) private playerGraphics: Node; // 玩家图形节点
     @property(Animation) private animation: Animation; // 动画组件
     @property(Sprite) private sprite: Sprite; // 精灵组件
+    @property(PickUp)  private pickUp: PickUp; // 拾取
 
     private input: IInput; // 输入接口
     private health: UnitHealth; // 生命值
@@ -28,6 +30,8 @@ export class Player extends Component {
 
     private isMoveAnimationPlaying = false; // 是否正在播放移动动画
 
+    private rang: number; // 拾取等级
+
     // 初始化方法
     public init(input: IInput, data: PlayerData): void {
         this.input = input;
@@ -35,11 +39,13 @@ export class Player extends Component {
         this.level = new UnitLevel(data.requiredXP, data.xpMultiplier);
         this.regeneration = new PlayerRegeneration(this.health, data.regenerationDelay);
         this.speed = data.speed;
+        this.rang = data.rang;
 
         this.weapon.init(data.strikeDelay, data.damage);
         this.magnet.init(data.magnetDuration);
         this.health.HealthPointsChangeEvent.on(this.animateHpChange, this);
         this.playerUI.init(this.health);
+        this.pickUp.init(this.rang);
     }
 
     public get Health(): UnitHealth {
@@ -64,6 +70,14 @@ export class Player extends Component {
 
     public get Collider(): Collider2D {
         return this.collider;
+    }
+
+    public get Rang(): number {
+        return this.rang;
+    }
+
+    public get PickUp(): PickUp {
+        return this.pickUp;
     }
 
     // 游戏每帧调用的方法
@@ -132,6 +146,7 @@ export class PlayerData {
     public regenerationDelay = 0;
     public xpMultiplier = 0;
     public goldMultiplier = 0;
+    public rang = 0;
 
     // 武器
     public strikeDelay = 0;

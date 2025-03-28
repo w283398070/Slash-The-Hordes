@@ -17,6 +17,7 @@ export class MetaUpgrades {
         this.upgradeTypeToValue.set(MetaUpgradeType.MovementSpeed, this.getBonusValue(data.movementSpeedLevel, settings.movementSpeed.bonuses));
         this.upgradeTypeToValue.set(MetaUpgradeType.XPGatherer, this.getBonusValue(data.xpGathererLevel, settings.xpGatherer.bonuses));
         this.upgradeTypeToValue.set(MetaUpgradeType.GoldGatherer, this.getBonusValue(data.goldGathererLevel, settings.goldGatherer.bonuses));
+        this.upgradeTypeToValue.set(MetaUpgradeType.Rang, this.getBonusValue(data.rangLevel, settings.rang.bonuses));
     }
 
     // 获取对应等级的奖励值

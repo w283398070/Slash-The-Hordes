@@ -34,6 +34,10 @@ export class MetaUpgradeIcons extends Component {
     @property(SpriteFrame) 
     private goldGathererSprite: SpriteFrame;
 
+    /** 范围升级图标 */
+    @property(SpriteFrame) 
+    private rangGathererSprite: SpriteFrame;
+
     /** 升级类型到图标的映射表 */
     private typeToIcon = new Map<MetaUpgradeType, SpriteFrame>();
 
@@ -47,6 +51,7 @@ export class MetaUpgradeIcons extends Component {
         this.typeToIcon.set(MetaUpgradeType.MovementSpeed, this.movementSpeedSprite);
         this.typeToIcon.set(MetaUpgradeType.XPGatherer, this.xpGathererSprite);
         this.typeToIcon.set(MetaUpgradeType.GoldGatherer, this.goldGathererSprite);
+        this.typeToIcon.set(MetaUpgradeType.Rang, this.rangGathererSprite);
     }
 
     /**

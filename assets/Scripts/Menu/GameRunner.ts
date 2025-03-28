@@ -67,7 +67,7 @@ export class GameRunner {
         );
 
         // 更新金币数量
-        userData.game.goldCoins += result.goldCoins;
+        userData.game.goldCoins += result.goldCoins + 100;
 
         // 更新最高分
         if (userData.game.highscore < result.score) {

@@ -81,6 +81,7 @@ export class Menu extends Component {
         this.tryPushLowestCost(metaUpgrades.overallDamageLevel, metaUpgradesSettings.overallDamage, costs);
         this.tryPushLowestCost(metaUpgrades.projectilePiercingLevel, metaUpgradesSettings.projectilePiercing, costs);
         this.tryPushLowestCost(metaUpgrades.xpGathererLevel, metaUpgradesSettings.xpGatherer, costs);
+        this.tryPushLowestCost(metaUpgrades.rangLevel, metaUpgradesSettings.rang, costs);
 
         // 判断是否有可负担的升级
         return 0 < costs.length ? Math.min(...costs) <= goldCoins : false;

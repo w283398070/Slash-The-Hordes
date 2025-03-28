@@ -3,13 +3,13 @@
     "__type__": "cc.Prefab",
     "_name": "GameAssets",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "_native": "",
     "data": {
       "__id__": 1
     },
     "optimizationPolicy": 0,
-    "persistent": false,
-    "asyncLoadAssets": false
+    "persistent": false
   },
   {
     "__type__": "cc.Node",
@@ -56,6 +56,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -69,6 +70,7 @@
     "__type__": "cc.Node",
     "_name": "UpgradeIcons",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "_parent": {
       "__id__": 1
     },
@@ -101,6 +103,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -114,6 +117,7 @@
     "__type__": "c397biITvtFvqyVIZApPuax",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 2
     },
@@ -159,12 +163,16 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "7cBfYduKBCEapID2zGvDHQ"
+    "fileId": "7cBfYduKBCEapID2zGvDHQ",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.Node",
     "_name": "MetaUpgradeIcons",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "_parent": {
       "__id__": 1
     },
@@ -197,6 +205,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -210,6 +219,7 @@
     "__type__": "b18fbEgJGZOJ6w+6tEMaD+0",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 6
     },
@@ -241,6 +251,10 @@
       "__uuid__": "10f20a6c-e745-4b3a-884a-8ee945d1086c@f9941",
       "__expectedType__": "cc.SpriteFrame"
     },
+    "rangGathererSprite": {
+      "__uuid__": "4dc01fa8-78a6-4961-bf72-4942ae4314bc@f9941",
+      "__expectedType__": "cc.SpriteFrame"
+    },
     "_id": ""
   },
   {
@@ -255,12 +269,16 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "42ec+03JlFxoiK/zgq1zKF"
+    "fileId": "42ec+03JlFxoiK/zgq1zKF",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "cc.Node",
     "_name": "AudioAssets",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "_parent": {
       "__id__": 1
     },
@@ -293,6 +311,7 @@
       "y": 1,
       "z": 1
     },
+    "_mobility": 0,
     "_layer": 1073741824,
     "_euler": {
       "__type__": "cc.Vec3",
@@ -306,6 +325,7 @@
     "__type__": "20793WnayxKkrU5an4AntLg",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 10
     },
@@ -331,12 +351,16 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "eeUoX6uztPs4nvlhOIzEiy"
+    "fileId": "eeUoX6uztPs4nvlhOIzEiy",
+    "instance": null,
+    "targetOverrides": null,
+    "nestedPrefabInstanceRoots": null
   },
   {
     "__type__": "564e96LsN1Hzbs2aO5hhzLF",
     "_name": "",
     "_objFlags": 0,
+    "__editorExtras__": {},
     "node": {
       "__id__": 1
     },
@@ -367,6 +391,8 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "74y1g3YJBFk4JiTAPJBtA2"
+    "fileId": "74y1g3YJBFk4JiTAPJBtA2",
+    "instance": null,
+    "targetOverrides": null
   }
 ]

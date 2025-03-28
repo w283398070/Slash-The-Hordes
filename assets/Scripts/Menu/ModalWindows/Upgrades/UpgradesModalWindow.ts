@@ -32,6 +32,7 @@ export class UpgradesModalWindow extends ModalWindow<Empty, Empty> {
         this.createUpgradeButton(MetaUpgradeType.MovementSpeed, settings.movementSpeed, "movementSpeedLevel");
         this.createUpgradeButton(MetaUpgradeType.XPGatherer, settings.xpGatherer, "xpGathererLevel");
         this.createUpgradeButton(MetaUpgradeType.GoldGatherer, settings.goldGatherer, "goldGathererLevel");
+        this.createUpgradeButton(MetaUpgradeType.Rang, settings.rang, "rangLevel");
 
         this.goldCoinsLabel.string = this.userData.game.goldCoins.toString(); // 更新金币标签
     }

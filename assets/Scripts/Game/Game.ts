@@ -32,6 +32,7 @@ import { ProjectileLauncher } from "./Projectile/ProjectileLauncher/ProjectileLa
 import { WaveProjectileLauncher } from "./Projectile/ProjectileLauncher/WaveProjectileLauncher";
 import { Upgrader } from "./Upgrades/Upgrader";
 import { MetaUpgradeType } from "./Upgrades/UpgradeType";
+import { PickUpCollisionSystem } from "./Collision/PickUpCollisionSystem";
 
 const { ccclass, property } = _decorator;
 
@@ -239,6 +240,7 @@ export class Game extends Component {
         // 初始化物品系统
         this.itemAttractor = new ItemAttractor(this.player.node, 100);
         new MagnetCollisionSystem(this.player.Magnet, this.itemAttractor);
+        new PickUpCollisionSystem(this.player.PickUp, this.itemAttractor);
 
         // 初始化升级系统
         const upgrader = new Upgrader(
@@ -288,6 +290,7 @@ export class Game extends Component {
         playerData.regenerationDelay = settings.regenerationDelay;
         playerData.xpMultiplier = metaUpgrades.getUpgradeValue(MetaUpgradeType.XPGatherer) + 1;
         playerData.goldMultiplier = metaUpgrades.getUpgradeValue(MetaUpgradeType.GoldGatherer) + 1;
+        playerData.rang = metaUpgrades.getUpgradeValue(MetaUpgradeType.Rang);
 
         playerData.damage = metaUpgrades.getUpgradeValue(MetaUpgradeType.OverallDamage) + settings.weapon.damage;
         playerData.strikeDelay = settings.weapon.strikeDelay;

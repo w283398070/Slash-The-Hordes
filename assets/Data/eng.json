@@ -22,5 +22,7 @@
     "META_XP_GATHERER_TITLE": "XP GATHERER",
     "META_XP_GATHERER_DESC": "Increases the amount of XP obtained by {0}",
     "META_GOLD_GATHERER_TITLE": "GOLD GATHERER",
-    "META_GOLD_GATHERER_DESC": "Increases the amount of gold obtained by {0}"
+    "META_GOLD_GATHERER_DESC": "Increases the amount of gold obtained by {0}",
+    "META_RANG_TITLE": "RANG GATHERER",
+    "META_RANG_DESC": "Increases pick rang"
 }

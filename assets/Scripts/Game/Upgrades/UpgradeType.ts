@@ -15,5 +15,6 @@ export enum MetaUpgradeType {
     ProjectilePiercing = "META_PROJECTILE_PIERCING", // 弹道穿透
     MovementSpeed = "META_MOVEMENT_SPEED", // 移动速度
     XPGatherer = "META_XP_GATHERER", // 经验值收集
-    GoldGatherer = "META_GOLD_GATHERER" // 金币收集
+    GoldGatherer = "META_GOLD_GATHERER", // 金币收集
+    Rang = "META_RANG" // 磁铁范围
 }
